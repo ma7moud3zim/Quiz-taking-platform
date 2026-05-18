@@ -6,7 +6,7 @@ $White: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 57px;
+  padding: 0px 70px;
   background-color: $secondary-color;
   height: auto;
 
@@ -15,8 +15,8 @@ $White: #ffffff;
   }
 
   a{
-    font-weight: 300;
-    font-size: 15px;
+    font-weight: 400;
+    font-size: 16px;
     border-radius: 0px;
     color: $White;
   }
@@ -24,7 +24,7 @@ $White: #ffffff;
   a.ant-btn{
     &:hover{
       color: $White;
-      background: $secondary-color;
+      background: $primary-color;
 
     }
   }

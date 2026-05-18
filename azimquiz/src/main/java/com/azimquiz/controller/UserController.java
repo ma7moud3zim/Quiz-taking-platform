@@ -33,4 +33,16 @@ public class UserController {
 		
 		return ResponseEntity.ok(createdUser);
 	}
+	
+	
+	@PostMapping("/login")
+	public ResponseEntity<?> loginUser(@RequestBody User user) {
+		User dbUser = userService.login(user);
+		
+		if(dbUser == null) {
+			return new ResponseEntity<>("Invalid email or password",HttpStatus.NOT_ACCEPTABLE);
+		}
+		
+		return ResponseEntity.ok(dbUser);
+	}
 }
