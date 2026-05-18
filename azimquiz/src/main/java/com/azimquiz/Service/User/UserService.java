@@ -1,5 +1,8 @@
 package com.azimquiz.Service.User;
 
-public interface UserService {
+import com.azimquiz.entities.User;
 
+public interface UserService {
+	User createUser(User user);
+	Boolean hasUserWithEmail(String email);
 }

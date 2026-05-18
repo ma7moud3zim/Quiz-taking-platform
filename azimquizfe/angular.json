@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "azimquizweb": {
+    "azimquizfe": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -65,10 +65,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "azimquizweb:build:production"
+              "buildTarget": "azimquizfe:build:production"
             },
             "development": {
-              "buildTarget": "azimquizweb:build:development"
+              "buildTarget": "azimquizfe:build:development"
             }
           },
           "defaultConfiguration": "development"
