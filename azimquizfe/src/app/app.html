@@ -1,3 +1,4 @@
+<div *ngIf="!isUserLoggedIn && !isAdminLoggedIn">
 <nz-header class="main-header" nz-row nzType="flex" style="background-color: #003974;">
   <div>
     <a style="color: white; margin-left: 50px; font-size: 30px; font-weight: bolder; font-family: 'Courier New', monospace;"
@@ -6,11 +7,48 @@
       Azim Quiz
     </a>
   </div>
-
   <div class="nav-links">
     <a nz-button nzType="link" routerLink="/register" routerLinkActive="active">Sign Up</a>
     <a nz-button nzType="link" routerLink="/login" routerLinkActive="active">Login</a>
   </div>
 </nz-header>
+</div>
+
+  <div *ngIf="isAdminLoggedIn">
+  <nz-header class="main-header" nz-row nzType="flex" style="background-color: #003974;">
+    <div>
+      <a style="color: white; margin-left: 50px; font-size: 30px; font-weight: bolder; font-family: 'Courier New', monospace;"
+      routerLink="/admin/dashboard"
+      >
+        Azim Quiz
+      </a>
+    </div>
+    <div class="nav-links">
+      <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+      <a nz-button nzType="link" routerLink="/admin/create-test" routerLinkActive="active">Create Test</a>
+      <a nz-button nzType="link" routerLink="/admin/view-results" routerLinkActive="active">View Results</a>
+      <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+    </div>
+  </nz-header>
+  </div>
+
+
+  <div *ngIf="isAdminLoggedIn">
+  <nz-header class="main-header" nz-row nzType="flex" style="background-color: #003974;">
+    <div>
+      <a style="color: white; margin-left: 50px; font-size: 30px; font-weight: bolder; font-family: 'Courier New', monospace;"
+      routerLink="/admin/dashboard"
+      >
+        Azim Quiz
+      </a>
+    </div>
+    <div class="nav-links">
+      <a nz-button nzType="link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+      <a nz-button nzType="link" routerLink="/admin/create-test" routerLinkActive="active">Create Test</a>
+      <a nz-button nzType="link" routerLink="/admin/view-results" routerLinkActive="active">View Results</a>
+      <a nz-button nzType="link" (click)="logout()" routerLinkActive="active">Logout</a>
+    </div>
+  </nz-header>
+  </div>
 
 <router-outlet></router-outlet>
