@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Router } from '@angular/router';
 import { Auth } from '../../services/auth';
+import { UserStorage } from '../../services/user-storage';
 
 @Component({
   selector: 'app-login',
@@ -30,6 +31,17 @@ export class Login {
       this.message.
       success('Login successful', {
         nzDuration: 5000});
+        const user = {
+          id: res.id,
+          email: res.email,
+          role: res.role
+         };
+        UserStorage.saveUser(user);
+        if(UserStorage.isAdminLoggedIn()){
+          this.router.navigate(['/admin/dashboard']);
+        } else {
+          this.router.navigate(['/user/dashboard']);
+        }
         console.log(res);
       },error => {
         this.message.error(`Bad Credentials`,
