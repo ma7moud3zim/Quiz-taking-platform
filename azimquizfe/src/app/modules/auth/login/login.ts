@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { SharedModule } from '../../../shared/shared-module';
+import { SharedModule } from '../../shared/shared-module';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Router } from '@angular/router';
-import { Auth } from '../../services/auth';
-import { UserStorage } from '../../services/user-storage';
+import { Auth } from '../services/auth';
+import { UserStorage } from '../services/user-storage';
 
 @Component({
   selector: 'app-login',

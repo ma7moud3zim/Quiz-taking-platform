@@ -23,12 +23,14 @@ nx-form-control{
 }
 
 button{
-  background-color: #003974;
+  background-color: #42644e;
   border: none;
   color: white;
   font-weight: bold;
 }
-
+button:hover{
+  background-color: #d19b6e;
+}
 nz-divider{
   padding-bottom: 10px;
 }
