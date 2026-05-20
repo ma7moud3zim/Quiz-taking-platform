@@ -37,11 +37,13 @@ export class Login {
           role: res.role
          };
         UserStorage.saveUser(user);
+
         if(UserStorage.isAdminLoggedIn()){
           this.router.navigate(['/admin/dashboard']);
         } else {
           this.router.navigate(['/user/dashboard']);
         }
+        
         console.log(res);
       },error => {
         this.message.error(`Bad Credentials`,

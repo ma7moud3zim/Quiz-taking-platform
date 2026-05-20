@@ -1,11 +1,17 @@
 package com.azimquiz.entities;
 
+
+
+import java.util.List;
+
 import com.azimquiz.dto.TestDTO;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
@@ -21,6 +27,9 @@ public class Test {
 	private String description;
 	
 	private Long time;
+	
+	@OneToMany(mappedBy = "test", cascade = CascadeType.ALL)
+	private List<Question> questions;
 	
 	public TestDTO getDTO() {
 		TestDTO dto = new TestDTO();
