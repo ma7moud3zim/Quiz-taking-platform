@@ -6,9 +6,9 @@ import lombok.Data;
 public class TestDTO {
 	private Long id;
 	
-	private String name;
+	private String title;
 	
 	private String description;
 	
-	private Long Time;
+	private Long time;
 }

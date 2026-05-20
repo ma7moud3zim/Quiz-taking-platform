@@ -1,5 +1,7 @@
 package com.azimquiz.entities;
 
+import com.azimquiz.dto.TestDTO;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,10 +16,19 @@ public class Test {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String name;
+	private String title;
 	
 	private String description;
 	
 	private Long time;
+	
+	public TestDTO getDTO() {
+		TestDTO dto = new TestDTO();
+		dto.setId(this.id);
+		dto.setTitle(this.title);
+		dto.setDescription(this.description);
+		dto.setTime(this.time);
+		return dto;
+	}
 	
 }
