@@ -36,13 +36,14 @@ public class Question {
 	
 	public QuestionDTO getDto() {
 		QuestionDTO dto = new QuestionDTO();
-		dto.setId(this.id);
-		dto.setQuestionText(this.questionText);
-		dto.setOptionA(this.optionA);
-		dto.setOptionB(this.optionB);
-		dto.setOptionC(this.optionC);
-		dto.setOptionD(this.optionD);
-		dto.setCorrectOption(this.correctOption);
+		
+		dto.setId(id);
+		dto.setQuestionText(questionText);
+		dto.setOptionA(optionA);
+		dto.setOptionB(optionB);
+		dto.setOptionC(optionC);
+		dto.setOptionD(optionD);
+		dto.setCorrectOption(correctOption);
 		return dto;
 	}
 	

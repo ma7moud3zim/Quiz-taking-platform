@@ -38,7 +38,6 @@ public class TestServiceImp implements TestService{
 	public QuestionDTO addQuestionInTest(QuestionDTO dto) {
 		Optional<Test> testOpt = testRepository.findById(dto.getId());
 		if(testOpt.isPresent()) {
-			Test test = testOpt.get();
 			Question question = new Question();
 			question.setTest(testOpt.get());
 			question.setQuestionText(dto.getQuestionText());
@@ -56,7 +55,7 @@ public class TestServiceImp implements TestService{
 	
 	public List<TestDTO> getAllTests() {
 		return testRepository.findAll().stream().peek(
-				test  -> test.setTime(test.getQuestions().size() * test.getTime())).collect(Collectors.toList())
+				test  -> test.setTime(test.getQuestions().size() * test.getTime() ) ).collect(Collectors.toList())
 				.stream().map(Test::getDTO).collect(Collectors.toList());
 	}
 	
