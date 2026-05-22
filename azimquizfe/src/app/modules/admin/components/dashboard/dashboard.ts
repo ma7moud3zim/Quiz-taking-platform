@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { SharedModule } from '../../../shared/shared-module';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Admin } from '../../services/admin';
@@ -12,11 +12,12 @@ import { Admin } from '../../services/admin';
 export class Dashboard {
   tests = [];
 
-  constructor(private notification: NzNotificationService, private testService: Admin) {
+  constructor(private notification: NzNotificationService, private testService: Admin,  private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
     this.getAllTests();
+    this.cdr.detectChanges();
   }
 
   getAllTests() {
@@ -33,5 +34,5 @@ export class Dashboard {
       const seconds = time % 60;
       return `${minutes}m ${seconds}s`;
     }
-    
+
 }
