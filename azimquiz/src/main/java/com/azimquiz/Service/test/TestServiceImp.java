@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.azimquiz.dto.QuestionDTO;
 import com.azimquiz.dto.TestDTO;
+import com.azimquiz.dto.TestDetailsDTO;
 import com.azimquiz.entities.Question;
 import com.azimquiz.entities.Test;
 import com.azimquiz.repository.QuestionRepository;
@@ -58,5 +59,20 @@ public class TestServiceImp implements TestService{
 				test  -> test.setTime(test.getQuestions().size() * test.getTime() ) ).collect(Collectors.toList())
 				.stream().map(Test::getDTO).collect(Collectors.toList());
 	}
+	
+	public TestDetailsDTO getAllQuestionsByTest(Long id) {
+		Optional<Test> optionalTest = testRepository.findById(id);
+		TestDetailsDTO testDetailsDTO = new TestDetailsDTO();
+		if(optionalTest.isPresent()) {
+			TestDTO testDTO = optionalTest.get().getDTO();
+			testDTO.setTime(optionalTest.get().getTime() * optionalTest.get().getQuestions().size());
+			
+			testDetailsDTO.setTestDTO(testDTO);
+			testDetailsDTO.setQuestions(optionalTest.get().getQuestions().stream().map(Question::getDto).toList());
+			return testDetailsDTO;
+		}
+		return testDetailsDTO;
+	}
+	
 	
 }
