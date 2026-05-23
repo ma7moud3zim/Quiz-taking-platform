@@ -7,16 +7,16 @@ import { UserStorage } from './modules/auth/services/user-storage';
   selector: 'app-root',
   imports: [SharedModule, RouterLinkActive],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
   protected readonly title = signal('azimquizfe');
   isUserLoggedIn: boolean = UserStorage.isUserLoggedIn();
   isAdminLoggedIn: boolean = UserStorage.isAdminLoggedIn();
 
-  constructor(private router: Router){}
+  constructor(private router: Router) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.router.events.subscribe(() => {
       this.isUserLoggedIn = UserStorage.isUserLoggedIn();
       this.isAdminLoggedIn = UserStorage.isAdminLoggedIn();
@@ -27,6 +27,7 @@ export class App {
     UserStorage.signOut();
     this.router.navigate(['/login']);
   }
-
-
+  forceReflow() {
+    void document.body.offsetHeight;
+  }
 }
