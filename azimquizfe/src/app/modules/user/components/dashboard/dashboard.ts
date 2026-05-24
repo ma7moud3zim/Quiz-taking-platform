@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { Routes } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { SharedModule } from '../../../shared/shared-module';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Test } from '../../services/test';
-
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,29 +14,36 @@ import { Test } from '../../services/test';
 export class Dashboard {
   tests = [];
 
-  constructor(private notification: NzNotificationService,
+  constructor(
+    private notification: NzNotificationService,
     private testService: Test,
-    private cdr: ChangeDetectorRef
-  ) {}
+    private cdr: ChangeDetectorRef,
+    private router: Router,
+  ) {
+    this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
+      this.getAllTests();
+    });
+  }
 
-ngOnInit() {
+  ngOnInit() {
     this.getAllTests();
-    this.cdr.detectChanges();
   }
 
   getAllTests() {
-    this.testService.getAllTest().subscribe(res=>{
+    this.testService.getAllTest().subscribe(
+      (res) => {
         this.tests = res;
-      },error=>{
-        this.notification
-       .error('Error', `Failed to fetch tests`, {nzDuration: 5000})
-      })
-    }
+        this.cdr.detectChanges();
+      },
+      (error) => {
+        this.notification.error('Error', `Failed to fetch tests`, { nzDuration: 5000 });
+      },
+    );
+  }
 
-    getFormatedTime(time):string{
-      const minutes = Math.floor(time / 60);
-      const seconds = time % 60;
-      return `${minutes}m ${seconds}s`;
-    }
-
+  getFormatedTime(time): string {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes}m ${seconds}s`;
+  }
 }

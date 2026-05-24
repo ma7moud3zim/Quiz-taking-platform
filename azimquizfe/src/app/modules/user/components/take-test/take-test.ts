@@ -1,21 +1,23 @@
 import { ChangeDetectorRef, Component, ElementRef } from '@angular/core';
 import { SharedModule } from '../../../shared/shared-module';
-import { ActivatedRoute } from '@angular/router';
-import { Admin } from '../../services/admin';
+import { Test } from '../../services/test';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
-  selector: 'app-view-test',
+  selector: 'app-take-test',
   imports: [SharedModule],
-  templateUrl: './view-test.html',
-  styleUrl: './view-test.scss',
+  templateUrl: './take-test.html',
+  styleUrl: './take-test.scss',
 })
-export class ViewTest {
+export class TakeTest {
   questions: any[] = [];
   testId: any;
-
   constructor(
-    private adminService: Admin,
+    private testService: Test,
     private activatedRoute: ActivatedRoute,
+    private message: NzMessageService,
+    private router: Router,
     private cdr: ChangeDetectorRef,
     private el: ElementRef,
   ) {}
@@ -23,7 +25,7 @@ export class ViewTest {
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe((params) => {
       this.testId = +params.get('id');
-      this.adminService.getTestQuestions(this.testId).subscribe((res) => {
+      this.testService.getTestQuestions(this.testId).subscribe((res) => {
         this.questions = res.questions;
         this.refresh();
       });
