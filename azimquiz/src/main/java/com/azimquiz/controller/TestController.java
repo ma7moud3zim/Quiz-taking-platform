@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.azimquiz.Service.test.TestService;
 import com.azimquiz.dto.QuestionDTO;
+import com.azimquiz.dto.SubmitTestDTO;
 import com.azimquiz.dto.TestDTO;
 
 @RestController
@@ -60,6 +61,15 @@ public class TestController {
 			return new ResponseEntity<>(testService.getAllQuestionsByTest(id), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>("Failed to retrieve tests: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@PostMapping("/submit-test")
+	public ResponseEntity<?> submitTest(@RequestBody SubmitTestDTO dto) {
+		try {
+			return ResponseEntity.ok(testService.submitTest(dto));
+		} catch (Exception e) {
+			return new ResponseEntity<>("Failed to submit test: " + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 	
