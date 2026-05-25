@@ -18,7 +18,7 @@ import com.azimquiz.dto.TestDTO;
 
 @RestController
 @RequestMapping("/api/test")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 public class TestController {
 
 	@Autowired
@@ -70,6 +70,16 @@ public class TestController {
 			return ResponseEntity.ok(testService.submitTest(dto));
 		} catch (Exception e) {
 			return new ResponseEntity<>("Failed to submit test: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	
+	@GetMapping("/test-result")
+	public ResponseEntity<?> getAllTestResults() {
+		try {
+			return ResponseEntity.ok(testService.getAllTestResults());
+		} catch (Exception e) {
+			return new ResponseEntity<>("Failed to retrieve tests: " + e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
 	

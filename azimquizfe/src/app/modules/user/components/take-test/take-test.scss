@@ -8,6 +8,27 @@
   margin-top: 30px;
 }
 
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.timer {
+  background-color: #f0f2f5;
+  border: 2px solid #42644e;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #42644e;
+  text-align: center;
+  width: fit-content;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .options {
   display: flex;
   flex-direction: column;
@@ -24,4 +45,15 @@
   input[type="radio"] {
     margin: 0;
   }
+}
+
+button {
+  background-color: #42644e;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #d19b6e;
 }

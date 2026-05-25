@@ -1,25 +1,56 @@
 <div style="margin: auto; width: 80%">
-  <form>
+  <div class="timer-container">
+    <div class="timer">Time Remaining: {{ getFormattedTime() }}</div>
+  </div>
+
+  <form (ngSubmit)="submitAnswers()">
     <div class="question" *ngFor="let question of questions">
       <h3>{{ question.questionText }}</h3>
       <div class="options">
         <label>
-          <input type="radio" name="question{{ question.id }}" value="A" />
+          <input
+            type="radio"
+            name="question{{ question.id }}"
+            value="A"
+            (change)="onAnswerChange(question.id, question.optionA)"
+          />
           {{ question.optionA }}
         </label>
         <label>
-          <input type="radio" name="question{{ question.id }}" value="B" />
+          <input
+            type="radio"
+            name="question{{ question.id }}"
+            value="B"
+            (change)="onAnswerChange(question.id, question.optionB)"
+          />
           {{ question.optionB }}
         </label>
         <label>
-          <input type="radio" name="question{{ question.id }}" value="C" />
+          <input
+            type="radio"
+            name="question{{ question.id }}"
+            value="C"
+            (change)="onAnswerChange(question.id, question.optionC)"
+          />
+
           {{ question.optionC }}
         </label>
         <label>
-          <input type="radio" name="question{{ question.id }}" value="D" />
+          <input
+            type="radio"
+            name="question{{ question.id }}"
+            value="D"
+            (change)="onAnswerChange(question.id, question.optionD)"
+          />
           {{ question.optionD }}
         </label>
       </div>
+    </div>
+
+    <div style="margin-top: 20px; margin-bottom: 20px; float: right">
+      <button style="margin-bottom: 20px" nz-button nzType="primary" type="submit">
+        Submit Answers
+      </button>
     </div>
   </form>
 </div>
