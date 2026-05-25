@@ -1,14 +1,14 @@
 <div class="results-card">
   <div class="results-header">
     <h2 style="color: white; font-size: 35px; font-weight: 400">📊 Your Quiz Results</h2>
-    <p>Results overview</p>
+    <p>Performance overview</p>
   </div>
 
-  <nz-table #basicTable class="elegant-table" [nzData]="resultsData">
+  <nz-table #basicTable [nzData]="dataSet" class="elegant-table">
     <thead>
       <tr>
         <th>📘 Test Name</th>
-        <th>👤 Username</th>
+        <th>❓ Total Questions</th>
         <th>✅ Correct Answers</th>
         <th>🏆 Percentage</th>
       </tr>
@@ -17,15 +17,14 @@
     <tbody>
       <tr *ngFor="let data of basicTable.data">
         <td>{{ data.testName }}</td>
-
-        <td>{{ data.userName }}</td>
-
+        <td>{{ data.totalQuestions }}</td>
         <td>{{ data.correctAnswers }}</td>
-
-        <td>
-          <span class="percentage-cell"> {{ data.percentage }}% </span>
-        </td>
+        <td class="percentage-cell">{{ data.percentage }}%</td>
       </tr>
     </tbody>
   </nz-table>
+
+  <div class="results-footer">
+    <small>✨ Keep practicing to improve your scores ✨</small>
+  </div>
 </div>

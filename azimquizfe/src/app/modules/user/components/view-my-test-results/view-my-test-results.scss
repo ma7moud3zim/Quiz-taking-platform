@@ -11,6 +11,7 @@
   transition: all 0.2s ease;
 }
 
+
 .results-header {
   background: linear-gradient(135deg, #42644e 0%, #609473 100%);
   padding: 1.5rem 2rem;
@@ -32,14 +33,32 @@
 }
 
 .elegant-table {
-  border-radius: 20px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  margin: 0;
+  background: transparent;
 }
 
-.elegant-table thead tr {
-  background: #dfe5ee;
+.elegant-table .ant-table {
+  background: transparent;
+}
+
+.elegant-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.elegant-table th {
+  padding: 1rem 1.2rem;
+  text-align: center;
+  border-bottom: 1px solid #e9edf4;
+}
+
+.elegant-table td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #edf1f7;
+  vertical-align: middle;
 }
 
 .elegant-table th {
@@ -51,25 +70,17 @@
   letter-spacing: 0.5px;
 }
 
-.elegant-table td {
-  padding: 1rem;
-  text-align: center;
-  border-bottom: 1px solid #edf1f7;
-  vertical-align: middle;
-}
-
 .elegant-table tbody tr:hover {
-  background: #f8fafc;
+  background: rgba(100, 140, 200, 0.05);
   transition: 0.2s;
 }
 
-.percentage-cell {
-  display: inline-block;
-  background: #7dd38a;
-  color: #14532d;
-  font-weight: 700;
-  padding: 0.4rem 1rem;
-  border-radius: 999px;
-  min-width: 70px;
+
+.results-footer {
+  background: #f9fbfe;
+  padding: 1rem;
   text-align: center;
+  font-size: 0.8rem;
+  color: #5a6e8a;
+  border-top: 1px solid #e9edf4;
 }
