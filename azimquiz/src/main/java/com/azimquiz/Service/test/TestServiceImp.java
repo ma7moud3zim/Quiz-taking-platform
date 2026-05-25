@@ -122,5 +122,8 @@ public class TestServiceImp implements TestService{
 		return testResultRepository.findAll().stream().map(TestResult::getDto).collect(Collectors.toList());
 	}
 	
+	public List<TestResultDTO> getAllTestResultsOfUser(Long userId) {
+		return testResultRepository.findAllByUserId(userId).stream().map(TestResult::getDto).collect(Collectors.toList());
+	}
 	
 }

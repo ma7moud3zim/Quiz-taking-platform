@@ -83,4 +83,13 @@ public class TestController {
 		}
 	}
 	
+	@GetMapping("/test-result/{id}")
+	public ResponseEntity<?> getAllTestResultsOfUser(@PathVariable Long id) {
+		try {
+			return ResponseEntity.ok(testService.getAllTestResultsOfUser(id));
+		} catch (Exception e) {
+			return new ResponseEntity<>("Failed to retrieve tests: " + e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 }
