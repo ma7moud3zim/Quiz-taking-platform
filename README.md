@@ -41,6 +41,9 @@ Quiz-taking-platform/
     │   └── environments/
     └── package.json
 ```
+## 🗄 The Database Scheme at MySQL 
+<img width="724" height="647" alt="image" src="https://github.com/user-attachments/assets/b38ae97c-ee7b-4b20-9a34-bb7d4456fd3d" />
+
 ---
 ## 📸 Screenshots
 
